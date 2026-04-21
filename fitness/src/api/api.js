@@ -1,15 +1,15 @@
 import axios from "axios";
 
-
 const BASE_URL = "https://t4e-testserver.onrender.com/api";
 
-export const getToken = async () => {
+export const getToken = async (studentId, password, set) => {
   const { data } = await axios.post(`${BASE_URL}/public/token`, {
-    studentId: "E0123046",
-    password: "901242",
-    set:"setB",
+    studentId,
+    password,
+    set,
   });
 
+  console.log("Token Response:", data);
   return data;
 };
 
@@ -20,5 +20,6 @@ export const getDataset = async (token, dataUrl) => {
     },
   });
 
-  return data.data;
+  console.log("Dataset Response:", data);
+  return data;
 };
